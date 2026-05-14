@@ -34,13 +34,12 @@ def load_faq_content(language: str) -> Optional[str]:
     Returns:
         FAQ content as markdown string, or None if file not found
     """
-    # Determine which FAQ file to load based on language
-    # For Chinese (zh_CN), use FAQ_CN.md
-    # For all other languages, use FAQ.md (English)
     project_root = Path(__file__).resolve().parent.parent.parent
-    
+
     if language.startswith("zh"):
         faq_file = project_root / "docs" / "FAQ_CN.md"
+    elif language.startswith("vi"):
+        faq_file = project_root / "docs" / "FAQ_VI.md"
     else:
         faq_file = project_root / "docs" / "FAQ.md"
     

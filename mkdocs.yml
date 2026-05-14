@@ -92,6 +92,33 @@ plugins:
             Contributing: 贡献指南
             FAQ: 常见问题
             Troubleshooting: 故障排查
+        - locale: vi
+          name: Tiếng Việt
+          build: true
+          nav_translations:
+            Home: Trang chủ
+            Getting Started: Bắt đầu
+            Installation: Cài đặt
+            Quick Start: Bắt đầu nhanh
+            Configuration: Cấu hình
+            User Guide: Hướng dẫn sử dụng
+            Web UI: Giao diện Web
+            API Usage: Sử dụng API
+            Workflows: Workflow
+            Templates: Mẫu
+            Gallery: Thư viện
+            Tutorials: Hướng dẫn
+            Your First Video: Video đầu tiên
+            Custom Style: Phong cách tùy chỉnh
+            Voice Cloning: Clone giọng
+            Reference: Tham khảo
+            API Overview: Tổng quan API
+            Config Schema: Cấu hình chi tiết
+            Development: Phát triển
+            Architecture: Kiến trúc
+            Contributing: Đóng góp
+            FAQ: Câu hỏi thường gặp
+            Troubleshooting: Xử lý sự cố
   - git-revision-date-localized:
       enable_creation_date: true
       type: datetime
