@@ -185,6 +185,51 @@ Dưới đây là một số video được tạo bằng Pixelle-Video, thể hi
 
 > 💡 **Mẹo**: Gói này đã kèm mọi dependency. Lần đầu dùng chỉ cần cấu hình API key.
 
+### 🐳 Chạy bằng Docker trên macOS Apple Silicon
+
+Nếu dùng Mac chip M1/M2/M3/M4, cách gọn nhất là chạy image Linux arm64 được GitHub Actions build sẵn trên GHCR.
+
+#### Cách 1: Chạy Web UI nhanh bằng `docker run`
+
+```bash
+mkdir -p pixelle-video-data/output pixelle-video-data/data
+cd pixelle-video-data
+curl -L -o config.yaml https://raw.githubusercontent.com/namlevia/Pixelle-Video/main/config.example.yaml
+
+docker run --rm -it \
+  --name pixelle-video-web \
+  -p 8501:8501 \
+  -v "$PWD/config.yaml:/app/config.yaml" \
+  -v "$PWD/data:/app/data" \
+  -v "$PWD/output:/app/output" \
+  ghcr.io/namlevia/pixelle-video:latest \
+  .venv/bin/streamlit run web/app.py --server.port 8501 --server.address 0.0.0.0
+```
+
+Mở trình duyệt tại http://localhost:8501.
+
+Nếu ComfyUI chạy trên Mac host, trong cấu hình hãy dùng địa chỉ:
+
+```text
+http://host.docker.internal:8188
+```
+
+#### Cách 2: Chạy bằng Docker Compose
+
+```bash
+git clone https://github.com/namlevia/Pixelle-Video.git
+cd Pixelle-Video
+cp config.example.yaml config.yaml
+PIXELLE_VIDEO_IMAGE=ghcr.io/namlevia/pixelle-video:latest docker compose up -d
+```
+
+Dịch vụ sẽ mở tại:
+
+- Web UI: http://localhost:8501
+- API: http://localhost:8000
+
+> Lưu ý: image được build tự động từ branch `main`. Sau khi push thay đổi, vào tab **Actions** của GitHub để xem workflow “Build Docker Image” hoàn tất, rồi chạy `docker pull ghcr.io/namlevia/pixelle-video:latest` để lấy bản mới nhất.
+
 ### Cài từ source (cho macOS / Linux hoặc người cần tùy biến)
 
 #### Yêu cầu trước khi cài

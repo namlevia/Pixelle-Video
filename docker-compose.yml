@@ -34,6 +34,7 @@ services:
 
   # API Service - FastAPI backend
   api:
+    image: ${PIXELLE_VIDEO_IMAGE:-ghcr.io/namlevia/pixelle-video:latest}
     build:
       context: .
       dockerfile: Dockerfile
@@ -75,6 +76,7 @@ services:
 
   # Web UI Service - Streamlit frontend
   web:
+    image: ${PIXELLE_VIDEO_IMAGE:-ghcr.io/namlevia/pixelle-video:latest}
     build:
       context: .
       dockerfile: Dockerfile
